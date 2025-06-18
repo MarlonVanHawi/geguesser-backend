@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 import * as turf from '@turf/turf';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import 'dotenv/config';    // loads .env into process.env
 
 // Helper to get __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -73,7 +74,11 @@ function getRandomLocation() {
 const app = express();
 const parties = {};
 const users = {};
-const JWT_SECRET = 'CHANGE_THIS_SECRET';
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  console.error('🚨 Missing JWT_SECRET env var');
+  process.exit(1);
+}
 
 // Helper to generate a unique 6-character party code
 function generateCode() {
