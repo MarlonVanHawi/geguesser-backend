@@ -75,6 +75,7 @@ const app = express();
 const parties = {};
 const users = {};
 const JWT_SECRET = process.env.JWT_SECRET;
+console.log('🎤 JWT_SECRET from env:', JWT_SECRET);
 if (!JWT_SECRET) {
   console.error('🚨 Missing JWT_SECRET env var');
   process.exit(1);
