@@ -15,7 +15,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Load Gelsenkirchen boundary
-const geojsonPath = path.join(__dirname, '../gelsenkirchen.geojson');
+const geojsonPath = path.join(__dirname, 'gelsenkirchen.geojson');
 const gelsenkirchenGeoJSON = JSON.parse(fs.readFileSync(geojsonPath));
 // A GeoJSON file is often a FeatureCollection, so we extract the first feature which contains the polygon.
 const gelsenkirchenBoundary = gelsenkirchenGeoJSON.features[0];
